@@ -1,20 +1,16 @@
 from tkinter import ttk
 import tkinter as tk
 
-class draw_content_button():
-    def __init__(self, content_type, master, text):
-        self.master = master
-        self.text = text
+def draw_folder_button(master, text):
+    button_frame = tk.Frame(master)
+    folder_icon = tk.PhotoImage(file = 'icons/folder.png')
 
-        self.folder_icon = tk.PhotoImage(file = 'icons/folder.png')
+    folder_widget = ttk.Label(button_frame, image = folder_icon)
+    folder_widget.image = folder_icon
+    folder_widget.pack(side = 'left')
 
-        if content_type == 'folder':
-            self.draw_folder_button()
-
-    def draw_folder_button(self):
-        folder_button = ttk.Button(self.master,
-                             text = f'   {self.text}',
-                             image = self.folder_icon,
-                             compound = 'left')
-        folder_button.image = self.folder_icon
-        folder_button.pack(fill = 'x', expand = True)
+    folder_button = ttk.Button(button_frame,
+                               text = f'   {text}',
+                               width = 45)
+    folder_button.pack(side = 'left', ipady = 5)
+    button_frame.pack()

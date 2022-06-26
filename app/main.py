@@ -1,7 +1,7 @@
 from os import walk
 from ttkthemes import ThemedTk
-from content_buttons import draw_content_button
 import tkinter as tk
+import content_buttons as cb
 
 root = ThemedTk(theme = 'arc')
 
@@ -18,7 +18,7 @@ class application():
     def widgets(self):
         content_frame = tk.Frame()
         for folder_names in sorted(next(walk('.'))[1]):
-            draw_content_button('folder', content_frame, folder_names)
+            cb.draw_folder_button(content_frame, folder_names)
         content_frame.pack()
 
         root.mainloop()
