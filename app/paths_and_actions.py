@@ -1,22 +1,20 @@
 from os import chdir, getcwd, path, walk
-from tkinter import ttk
-import tkinter as tk
 import content_buttons as cb
 
-first_time = True        # Boolean to check if it is the first time path_updater is working
+FIRST_TIME = True        # Boolean to check if it is the first time path_updater is working
 
 def path_updater(stringvar, entry):
-    global first_time
-    if first_time == True:
+    global FIRST_TIME
+    if FIRST_TIME:
         chdir(path.expanduser('~'))
-        first_time = False
+        FIRST_TIME = False
 
     stringvar.set(getcwd())
     entry.after(1000, lambda: path_updater(stringvar, entry))
 
 def list_folders(master, cwd):
-    for widget in master.winfo_children():
+    for widget in master.winfo_children():        # Clears frame
         widget.destroy()
 
-    for folder_names in sorted(next(walk(cwd))[1]):
+    for folder_names in sorted(next(walk(cwd))[1]):        # and places buttons
         cb.draw_folder_button(master, cwd, folder_names, master)

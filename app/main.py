@@ -1,7 +1,6 @@
 from os import path
 from ttkthemes import ThemedTk
 import tkinter as tk
-import content_buttons as cb
 import paths_and_actions as paa
 
 root = ThemedTk(theme = 'arc')

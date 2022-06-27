@@ -3,7 +3,7 @@ from tkinter import ttk
 import tkinter as tk
 import paths_and_actions as paa
 
-def draw_folder_button(master, cwd, text, frame_to_pass):
+def draw_folder_button(master, cwd, text, frame_to_pass):        # cb.draw_folder_button and paa.list_folders always works together
     button_frame = tk.Frame(master)
     folder_icon = tk.PhotoImage(file = f'{path.dirname(path.realpath(__file__))}/icons/folder.png')
 
