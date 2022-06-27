@@ -18,7 +18,7 @@ class application():
 
     def widgets(self):
         cwd = tk.StringVar()
-        cwd_widget = tk.Entry(state = 'disabled',
+        cwd_widget = tk.Entry(state = 'readonly',
                                textvariable = cwd,
                                justify = 'center')
         paa.path_updater(cwd, cwd_widget)
