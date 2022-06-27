@@ -11,7 +11,7 @@ def path_updater(stringvar, entry):
         FIRST_TIME = False
 
     stringvar.set(getcwd())
-    entry.after(1000, lambda: path_updater(stringvar, entry))
+    entry.after(500, lambda: path_updater(stringvar, entry))
 
 def list_folders(master, cwd):
     for widget in master.winfo_children():        # Clears frame
