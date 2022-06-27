@@ -1,4 +1,4 @@
-from os import walk
+from os import path
 from ttkthemes import ThemedTk
 import tkinter as tk
 import content_buttons as cb
@@ -10,22 +10,23 @@ class application():
     def __init__(self, root):
         root.title('tkexplorer')
         try:
-            root.iconbitmap('icons/icon.ico')
+            root.iconbitmap(f'{path.dirname(path.realpath(__file__))}/icons/icon.ico')
         except:
-            root.iconbitmap('@icons/icon.xbm')
+            root.iconbitmap(f'{path.dirname(path.realpath(__file__))}@icons/icon.xbm')
 
         self.widgets()
 
     def widgets(self):
-        path = tk.StringVar()
-        path_widget = tk.Entry(state = 'disabled',
-                               textvariable = path,
+        cwd = tk.StringVar()
+        cwd_widget = tk.Entry(state = 'disabled',
+                               textvariable = cwd,
                                justify = 'center')
-        paa.path_updater(path, path_widget)
-        path_widget.pack(fill = 'x')
+        paa.path_updater(cwd, cwd_widget)
+        cwd_widget.pack(fill = 'x')
 
-        for folder_names in sorted(next(walk('.'))[1]):
-            cb.draw_folder_button(root, folder_names)
+        buttons_frame = tk.Frame()
+        paa.list_folders(buttons_frame, cwd.get())
+        buttons_frame.pack()
 
         root.mainloop()
 
